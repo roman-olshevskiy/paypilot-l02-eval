@@ -445,6 +445,13 @@ def dry_run(cases: list, facts: dict, plan: dict, metrics: set) -> None:
           f"{3 * len(cases) * passes} llm.call агента")
 
 
+def load_cases(path: Path) -> list:
+    text = path.read_text(encoding="utf-8")
+    if text.lstrip().startswith("["):
+        return json.loads(text)
+    return [json.loads(line) for line in text.splitlines() if line.strip()]
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--profiles", default="clean,lesson-02",
@@ -455,15 +462,14 @@ def main() -> None:
                     help="runs of the clean baseline; 2 shows the noise floor")
     ap.add_argument("--only", help="comma list of case ids")
     ap.add_argument("--metrics", default="domain," + ",".join(LLM_METRICS))
-    ap.add_argument("--cases", default=str(HERE / "cases.jsonl"))
+    ap.add_argument("--cases", default=str(HERE / "cases.json"))
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--out", default="reports")
     ap.add_argument("--dry-run", action="store_true",
                     help="show the plan and the call estimate, call nothing")
     args = ap.parse_args()
 
-    cases = [json.loads(line) for line in Path(args.cases).read_text(encoding="utf-8").splitlines()
-             if line.strip()]
+    cases = load_cases(Path(args.cases))
     if args.only:
         keep = set(args.only.split(","))
         cases = [c for c in cases if c["id"] in keep]

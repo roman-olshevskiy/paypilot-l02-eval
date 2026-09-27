@@ -1,4 +1,4 @@
-# Only the dependencies live in the image; the script, cases.jsonl and
+# Only the dependencies live in the image; the script, cases.json and
 # reports/ are mounted from the working copy, so edits apply without a rebuild.
 FROM python:3.12-slim
 
