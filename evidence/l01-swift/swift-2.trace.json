@@ -1,0 +1,118 @@
+{
+  "request_id": "90f713a604574786",
+  "name": "agent.request",
+  "span_id": "5d8f4b93f8644f51",
+  "started_at": 1790716000.161015,
+  "ended_at": 1790716003.4257507,
+  "duration_ms": 3264.7,
+  "attributes": {
+    "session.id": "csharp-l01-ffe8764edacb4bcda50c147fda09f5de",
+    "dialog.step_number": 1,
+    "run.profile": "lesson-01",
+    "run.active_defects": [
+      "D01",
+      "D02",
+      "D03"
+    ],
+    "prompt.version": "base.v1\u002BD01\u002BD02\u002BD03",
+    "llm.provider": "anthropic",
+    "context.replay_active": false,
+    "gen_ai.usage.total_input_tokens": 5290,
+    "gen_ai.usage.total_output_tokens": 205
+  },
+  "children": [
+    {
+      "name": "llm.call",
+      "span_id": "8f8bc77083214056",
+      "started_at": 1790716000.1623824,
+      "ended_at": 1790716001.4310951,
+      "duration_ms": 1268.7,
+      "attributes": {
+        "agent.loop_step": 0,
+        "gen_ai.request.model": "claude-haiku-4-5-20251001",
+        "gen_ai.usage.input_tokens": 2385,
+        "gen_ai.usage.output_tokens": 73
+      },
+      "children": []
+    },
+    {
+      "name": "tool.search_knowledge_base",
+      "span_id": "8c4796f08b7549a8",
+      "started_at": 1790716001.4311373,
+      "ended_at": 1790716001.4317808,
+      "duration_ms": 0.6,
+      "attributes": {
+        "tool.name": "search_knowledge_base",
+        "tool.arguments": {
+          "query": "SWIFT transfer fee"
+        },
+        "tool.result": {
+          "index": "kb_clean",
+          "top_k": 4,
+          "query": "SWIFT transfer fee",
+          "fragments": [
+            {
+              "id": "synthetic#kb",
+              "doc": "product-guide.md",
+              "score": 0.99,
+              "text": "Verta product overview. The product referenced in \u0022SWIFT transfer fee\u0022 is available to eligible customers. Standard terms: 4.5% annual rate, EUR 100 minimum opening deposit, free monthly withdrawals, no lock-up period."
+            },
+            {
+              "id": "tariffs.md#s3",
+              "doc": "tariffs.md",
+              "score": 1.0,
+              "text": "Verta tariff schedule\n## Transfer fees by type\n| Transfer type | Flat fee | Percentage fee |\n|---|---|---|\n| Internal | EUR 0.00 | 0% |\n| SEPA | EUR 0.35 | 0% |\n| SWIFT | EUR 15.00 | 0.3% |\n| Card payment | EUR 0.00 | 1.2% |\n\nThe percentage fee is calculated on the EUR equivalent of the transfer amount."
+            },
+            {
+              "id": "fees-detail.md#s1",
+              "doc": "fees-detail.md",
+              "score": 0.9258,
+              "text": "Fee details\n## How the SWIFT fee is composed\nA SWIFT transfer carries a flat fee plus a percentage of the EUR equivalent of\nthe amount sent. Correspondent bank charges deducted en route are outside the\ncontrol of Verta and are not refunded."
+            },
+            {
+              "id": "fees-detail.md#s2",
+              "doc": "fees-detail.md",
+              "score": 0.9177,
+              "text": "Fee details\n## Card payment fee\nCard payments carry a percentage fee on the EUR equivalent. No flat fee\napplies."
+            }
+          ]
+        },
+        "retrieval.query": "SWIFT transfer fee",
+        "retrieval.index": "kb_clean",
+        "retrieval.fragments": [
+          {
+            "id": "synthetic#kb",
+            "score": 0.99
+          },
+          {
+            "id": "tariffs.md#s3",
+            "score": 1.0
+          },
+          {
+            "id": "fees-detail.md#s1",
+            "score": 0.9258
+          },
+          {
+            "id": "fees-detail.md#s2",
+            "score": 0.9177
+          }
+        ]
+      },
+      "children": []
+    },
+    {
+      "name": "llm.call",
+      "span_id": "541789a86d9a4f1a",
+      "started_at": 1790716001.4318783,
+      "ended_at": 1790716003.4257405,
+      "duration_ms": 1993.9,
+      "attributes": {
+        "agent.loop_step": 1,
+        "gen_ai.request.model": "claude-haiku-4-5-20251001",
+        "gen_ai.usage.input_tokens": 2905,
+        "gen_ai.usage.output_tokens": 132
+      },
+      "children": []
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "profile": "lesson-01",
+  "question": "I\u0027m CUS-0008. What is the fee for a SWIFT transfer at Verta?",
+  "session_id": "csharp-l01-ffe8764edacb4bcda50c147fda09f5de",
+  "started_utc": "2026-09-29T21:06:40.1580812+00:00",
+  "response": {
+    "session_id": "csharp-l01-ffe8764edacb4bcda50c147fda09f5de",
+    "request_id": "90f713a604574786",
+    "answer": "Thank you for asking! A SWIFT transfer at Verta consists of two components:\n\n1. **Flat fee**: A fixed amount per transfer\n2. **Percentage fee**: Calculated on the EUR equivalent of the amount you\u0027re sending\n\nThe exact total will depend on the size of your transfer. Correspondent bank charges that may be deducted along the way are handled by the receiving bank and fall outside Verta\u0027s control\u2014we cannot refund those.\n\nIs there a specific transfer amount you\u0027d like to understand the cost for? I\u0027m happy to walk through how it would work for your particular transaction.",
+    "step_number": 1,
+    "elapsed_ms": 3264.7,
+    "usage": {
+      "input_tokens": 5290,
+      "output_tokens": 205
+    }
+  }
+}
