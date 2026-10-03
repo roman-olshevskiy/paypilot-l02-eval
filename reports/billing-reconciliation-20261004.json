@@ -1,0 +1,62 @@
+{
+  "recorded_on": "2026-10-04",
+  "run_date": "2026-10-03",
+  "raw_report": "l02-clean-lesson-02-20261003-202039.json",
+  "raw_sha256": "64FF3EC4AEED691687DD01CAC4736B775A87E4F756DD35121A73556943350292",
+  "billing_source": {
+    "type": "transcribed provider dashboard figures; no independent console access",
+    "input_tokens": 522358,
+    "output_tokens": 83549,
+    "cost_usd": 0.94,
+    "scope": "Recorded scope: only this run used this API key",
+    "independently_accessed": false
+  },
+  "pricing": {
+    "model": "Claude Haiku 4.5",
+    "input_usd_per_million": 1,
+    "output_usd_per_million": 5,
+    "checked_on": "2026-10-04",
+    "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+    "scope": "Standard input/output rates; cache category breakdown unavailable"
+  },
+  "calls": {
+    "lower_bound": 205,
+    "agent": 127,
+    "judge": 465,
+    "total": 592
+  },
+  "averages": {
+    "input_tokens_per_call": 882.3614864864865,
+    "output_tokens_per_call": 141.13006756756758,
+    "combined_tokens_per_call": 1023.4915540540541
+  },
+  "agent_usage": {
+    "input_tokens": 310528,
+    "output_tokens": 14507,
+    "estimated_cost_usd": 0.383063
+  },
+  "inferred_judge_usage": {
+    "input_tokens": 211830,
+    "output_tokens": 69042,
+    "method": "dashboard total minus saved agent usage, assuming identical scope",
+    "estimated_cost_usd": 0.55704,
+    "measured_directly": false
+  },
+  "reconciliation": {
+    "standard_rate_cost_usd": 0.940103,
+    "runner_estimate_usd": 0.940113,
+    "difference_usd": 1E-05,
+    "runner_judge_costs_rounded_per_record": true,
+    "rounds_to_reported_bill": true,
+    "scope": "Agreement at displayed cents; no invoice or cache breakdown provided"
+  },
+  "monthly_proposal": {
+    "nightly_count": 30,
+    "nightly_clean_estimate_usd": 0.372558,
+    "nightly_month_estimate_usd": 11.17674,
+    "full_release_base_usd": 0.94,
+    "formula": "11.176740 + 0.94 * number_of_releases + additional_targeted_test_cost",
+    "merge_model_cost_usd": 0,
+    "infrastructure_and_review_cost_included": false
+  }
+}

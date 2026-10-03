@@ -1,0 +1,10 @@
+ Container paypilot-l02-eval-eval-run-d2803c029e14 Creating 
+ Container paypilot-l02-eval-eval-run-d2803c029e14 Created 
+test_capture_lesson02_prompt_and_existing_red_case_trace (test_l02_audit_evidence.L02AuditEvidenceTests.test_capture_lesson02_prompt_and_existing_red_case_trace) ... ok
+Captured existing evidence; request_id=9b404d6dfe0d4b30
+No chat calls, resets, clock/profile changes or model requests
+
+----------------------------------------------------------------------
+Ran 1 test in 0.086s
+
+OK

@@ -1,0 +1,337 @@
+{
+  "source_report": "l02-clean-lesson-02-20261003-202039.json",
+  "source_sha256": "64FF3EC4AEED691687DD01CAC4736B775A87E4F756DD35121A73556943350292",
+  "metric": "faithfulness",
+  "gate_rule": "score < threshold",
+  "cohort_case_ids": [
+    "C-03",
+    "C-04",
+    "C-06",
+    "C-09",
+    "C-11",
+    "C-12"
+  ],
+  "cohort_selection": "retrospective matched cohort: explicit rule/account tasks; full answers checked against facts before treating clean as correct; scores not a correctness label",
+  "labels": [
+    {
+      "id": "C-03",
+      "profile": "clean",
+      "run": 1,
+      "request_id": "1cf91d1cafa84bee",
+      "label": "verified_correct_for_case",
+      "criterion": "60-day duplicate-charge window; deadline 2026-09-12; expired on 2026-09-15",
+      "faithfulness": 0.833
+    },
+    {
+      "id": "C-04",
+      "profile": "clean",
+      "run": 1,
+      "request_id": "e055598653d343b9",
+      "label": "verified_correct_for_case",
+      "criterion": "Tier2 spread must be 0.9%, not 1.5%; allowance exhausted",
+      "faithfulness": 0.778
+    },
+    {
+      "id": "C-06",
+      "profile": "clean",
+      "run": 1,
+      "request_id": "6b6dd4534cb64e19",
+      "label": "verified_correct_for_case",
+      "criterion": "ACC-1003 USD exists; balance 5200.75; saying not found is incorrect",
+      "faithfulness": 1.0
+    },
+    {
+      "id": "C-09",
+      "profile": "clean",
+      "run": 1,
+      "request_id": "f1998fcbd78f4c6c",
+      "label": "verified_correct_for_case",
+      "criterion": "Monthly EUR1000000 minus EUR35334 equals EUR964666",
+      "faithfulness": 1.0
+    },
+    {
+      "id": "C-11",
+      "profile": "clean",
+      "run": 1,
+      "request_id": "da59f1b09aff4a26",
+      "label": "verified_correct_for_case",
+      "criterion": "Fraud card-not-present window 120 days; deadline 2027-01-10",
+      "faithfulness": 1.0
+    },
+    {
+      "id": "C-12",
+      "profile": "clean",
+      "run": 1,
+      "request_id": "cfe79a347bf5438f",
+      "label": "verified_correct_for_case",
+      "criterion": "Duplicate-charge window 60 days; deadline 2026-11-07, not 90 days/2026-12-07",
+      "faithfulness": 0.8
+    },
+    {
+      "id": "C-03",
+      "profile": "clean",
+      "run": 2,
+      "request_id": "e56f441282814027",
+      "label": "verified_correct_for_case",
+      "criterion": "60-day duplicate-charge window; deadline 2026-09-12; expired on 2026-09-15",
+      "faithfulness": 1.0
+    },
+    {
+      "id": "C-04",
+      "profile": "clean",
+      "run": 2,
+      "request_id": "9778dcfb09a740da",
+      "label": "verified_correct_for_case",
+      "criterion": "Tier2 spread must be 0.9%, not 1.5%; allowance exhausted",
+      "faithfulness": 0.875
+    },
+    {
+      "id": "C-06",
+      "profile": "clean",
+      "run": 2,
+      "request_id": "686211968d494031",
+      "label": "verified_correct_for_case",
+      "criterion": "ACC-1003 USD exists; balance 5200.75; saying not found is incorrect",
+      "faithfulness": 1.0
+    },
+    {
+      "id": "C-09",
+      "profile": "clean",
+      "run": 2,
+      "request_id": "6b006ce501494e2a",
+      "label": "verified_correct_for_case",
+      "criterion": "Monthly EUR1000000 minus EUR35334 equals EUR964666",
+      "faithfulness": 1.0
+    },
+    {
+      "id": "C-11",
+      "profile": "clean",
+      "run": 2,
+      "request_id": "113ee882346c4e23",
+      "label": "verified_correct_for_case",
+      "criterion": "Fraud card-not-present window 120 days; deadline 2027-01-10",
+      "faithfulness": 1.0
+    },
+    {
+      "id": "C-12",
+      "profile": "clean",
+      "run": 2,
+      "request_id": "3dd4595539dc4720",
+      "label": "verified_correct_for_case",
+      "criterion": "Duplicate-charge window 60 days; deadline 2026-11-07, not 90 days/2026-12-07",
+      "faithfulness": 0.9
+    },
+    {
+      "id": "C-03",
+      "profile": "lesson-02",
+      "run": 1,
+      "request_id": "4a360573ecab4d8d",
+      "label": "verified_wrong_for_case",
+      "criterion": "60-day duplicate-charge window; deadline 2026-09-12; expired on 2026-09-15",
+      "faithfulness": 1.0
+    },
+    {
+      "id": "C-04",
+      "profile": "lesson-02",
+      "run": 1,
+      "request_id": "b35b47957e6d433a",
+      "label": "verified_wrong_for_case",
+      "criterion": "Tier2 spread must be 0.9%, not 1.5%; allowance exhausted",
+      "faithfulness": 1.0
+    },
+    {
+      "id": "C-06",
+      "profile": "lesson-02",
+      "run": 1,
+      "request_id": "c24cbc092ab64453",
+      "label": "verified_wrong_for_case",
+      "criterion": "ACC-1003 USD exists; balance 5200.75; saying not found is incorrect",
+      "faithfulness": 1.0
+    },
+    {
+      "id": "C-09",
+      "profile": "lesson-02",
+      "run": 1,
+      "request_id": "1e33b41e3f48404b",
+      "label": "not_in_tradeoff_denominator",
+      "criterion": "Monthly EUR1000000 minus EUR35334 equals EUR964666",
+      "faithfulness": 1.0
+    },
+    {
+      "id": "C-11",
+      "profile": "lesson-02",
+      "run": 1,
+      "request_id": "37b1f0affd4e4858",
+      "label": "not_in_tradeoff_denominator",
+      "criterion": "Fraud card-not-present window 120 days; deadline 2027-01-10",
+      "faithfulness": 1.0
+    },
+    {
+      "id": "C-12",
+      "profile": "lesson-02",
+      "run": 1,
+      "request_id": "4fe030d8afef4db0",
+      "label": "verified_wrong_for_case",
+      "criterion": "Duplicate-charge window 60 days; deadline 2026-11-07, not 90 days/2026-12-07",
+      "faithfulness": 0.8
+    },
+    {
+      "id": "C-03",
+      "profile": "lesson-02",
+      "run": 2,
+      "request_id": "9660f0a76d3c44db",
+      "label": "verified_wrong_for_case",
+      "criterion": "60-day duplicate-charge window; deadline 2026-09-12; expired on 2026-09-15",
+      "faithfulness": 0.857
+    },
+    {
+      "id": "C-04",
+      "profile": "lesson-02",
+      "run": 2,
+      "request_id": "c919de5c7d3144bb",
+      "label": "verified_wrong_for_case",
+      "criterion": "Tier2 spread must be 0.9%, not 1.5%; allowance exhausted",
+      "faithfulness": 0.6
+    },
+    {
+      "id": "C-06",
+      "profile": "lesson-02",
+      "run": 2,
+      "request_id": "d9d07e9b19f8472e",
+      "label": "verified_wrong_for_case",
+      "criterion": "ACC-1003 USD exists; balance 5200.75; saying not found is incorrect",
+      "faithfulness": 1.0
+    },
+    {
+      "id": "C-09",
+      "profile": "lesson-02",
+      "run": 2,
+      "request_id": "f0dbc636328b4080",
+      "label": "not_in_tradeoff_denominator",
+      "criterion": "Monthly EUR1000000 minus EUR35334 equals EUR964666",
+      "faithfulness": 0.667
+    },
+    {
+      "id": "C-11",
+      "profile": "lesson-02",
+      "run": 2,
+      "request_id": "e8f63b65c21d4957",
+      "label": "not_in_tradeoff_denominator",
+      "criterion": "Fraud card-not-present window 120 days; deadline 2027-01-10",
+      "faithfulness": 1.0
+    },
+    {
+      "id": "C-12",
+      "profile": "lesson-02",
+      "run": 2,
+      "request_id": "80e483814bd14b17",
+      "label": "verified_wrong_for_case",
+      "criterion": "Duplicate-charge window 60 days; deadline 2026-11-07, not 90 days/2026-12-07",
+      "faithfulness": 1.0
+    },
+    {
+      "id": "C-03",
+      "profile": "lesson-02",
+      "run": 3,
+      "request_id": "6cc1469a5d1e41a6",
+      "label": "verified_wrong_for_case",
+      "criterion": "60-day duplicate-charge window; deadline 2026-09-12; expired on 2026-09-15",
+      "faithfulness": 0.889
+    },
+    {
+      "id": "C-04",
+      "profile": "lesson-02",
+      "run": 3,
+      "request_id": "d799d2171e724c5f",
+      "label": "verified_wrong_for_case",
+      "criterion": "Tier2 spread must be 0.9%, not 1.5%; allowance exhausted",
+      "faithfulness": 0.75
+    },
+    {
+      "id": "C-06",
+      "profile": "lesson-02",
+      "run": 3,
+      "request_id": "4007ea6eb0d144de",
+      "label": "verified_wrong_for_case",
+      "criterion": "ACC-1003 USD exists; balance 5200.75; saying not found is incorrect",
+      "faithfulness": 0.8
+    },
+    {
+      "id": "C-09",
+      "profile": "lesson-02",
+      "run": 3,
+      "request_id": "fe402b1fc8e448eb",
+      "label": "not_in_tradeoff_denominator",
+      "criterion": "Monthly EUR1000000 minus EUR35334 equals EUR964666",
+      "faithfulness": 1.0
+    },
+    {
+      "id": "C-11",
+      "profile": "lesson-02",
+      "run": 3,
+      "request_id": "d4dcc2b8eacc479f",
+      "label": "not_in_tradeoff_denominator",
+      "criterion": "Fraud card-not-present window 120 days; deadline 2027-01-10",
+      "faithfulness": 0.8
+    },
+    {
+      "id": "C-12",
+      "profile": "lesson-02",
+      "run": 3,
+      "request_id": "5f35ec602126485f",
+      "label": "verified_wrong_for_case",
+      "criterion": "Duplicate-charge window 60 days; deadline 2026-11-07, not 90 days/2026-12-07",
+      "faithfulness": 1.0
+    }
+  ],
+  "thresholds": [
+    {
+      "threshold": 0.7,
+      "caught_count": 1,
+      "wrong_count": 12,
+      "stopped_count": 0,
+      "correct_count": 12,
+      "caught_request_ids": [
+        "c919de5c7d3144bb"
+      ],
+      "stopped_request_ids": [
+        null
+      ]
+    },
+    {
+      "threshold": 0.8,
+      "caught_count": 2,
+      "wrong_count": 12,
+      "stopped_count": 1,
+      "correct_count": 12,
+      "caught_request_ids": [
+        "c919de5c7d3144bb",
+        "d799d2171e724c5f"
+      ],
+      "stopped_request_ids": [
+        "e055598653d343b9"
+      ]
+    },
+    {
+      "threshold": 0.9,
+      "caught_count": 6,
+      "wrong_count": 12,
+      "stopped_count": 4,
+      "correct_count": 12,
+      "caught_request_ids": [
+        "4fe030d8afef4db0",
+        "9660f0a76d3c44db",
+        "c919de5c7d3144bb",
+        "6cc1469a5d1e41a6",
+        "d799d2171e724c5f",
+        "4007ea6eb0d144de"
+      ],
+      "stopped_request_ids": [
+        "1cf91d1cafa84bee",
+        "e055598653d343b9",
+        "cfe79a347bf5438f",
+        "9778dcfb09a740da"
+      ]
+    }
+  ]
+}

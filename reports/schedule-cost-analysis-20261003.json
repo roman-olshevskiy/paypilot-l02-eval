@@ -1,0 +1,31 @@
+{
+  "source_report": "l02-clean-lesson-02-20261003-202039.json",
+  "source_sha256": "64FF3EC4AEED691687DD01CAC4736B775A87E4F756DD35121A73556943350292",
+  "agent_price_assumption_usd_per_1m": {
+    "input": 1,
+    "output": 5
+  },
+  "billing_verified": false,
+  "profiles": [
+    {
+      "profile": "clean",
+      "records": 26,
+      "input_tokens": 128368.0,
+      "output_tokens": 5994.0,
+      "agent_estimate_usd": 0.158338,
+      "judge_sdk_estimate_usd": 0.21422000000000005,
+      "total_estimate_usd": 0.37255800000000006
+    },
+    {
+      "profile": "lesson-02",
+      "records": 39,
+      "input_tokens": 182160.0,
+      "output_tokens": 8513.0,
+      "agent_estimate_usd": 0.224725,
+      "judge_sdk_estimate_usd": 0.34282999999999997,
+      "total_estimate_usd": 0.567555
+    }
+  ],
+  "nightly_clean2_estimate_usd": 0.37255800000000006,
+  "release_eval_estimate_usd": 0.9401130000000001
+}
