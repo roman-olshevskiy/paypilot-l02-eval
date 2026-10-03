@@ -1,0 +1,15 @@
+{
+  "status": "ok",
+  "profile": "lesson-02",
+  "startup_profile": "clean",
+  "active_defects": [
+    "D04",
+    "D05",
+    "D16",
+    "D19",
+    "D20",
+    "D25"
+  ],
+  "provider": "anthropic",
+  "otlp": true
+}

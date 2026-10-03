@@ -1,0 +1,32 @@
+{
+  "audit_start_utc": "2026-10-03T20:56:21Z",
+  "audit_end_utc": "2026-10-03T20:57:43Z",
+  "audit_seconds": 82,
+  "evidence_test_passed": 1,
+  "request_id": "9b404d6dfe0d4b30",
+  "prompt_snapshot": "current lesson-02 snapshot, not archived original model input",
+  "hypothesis_recorded_before_edit": true,
+  "prompt_edit_performed": false,
+  "files": [
+    {
+      "path": "tests/test_l02_audit_evidence.py",
+      "sha256": "11A633FAFF869D871059DE812685A2602D5F99EB541145439DAF7F3D492BFDA0"
+    },
+    {
+      "path": "reports/audit-evidence-tests-20261003.txt",
+      "sha256": "5005A4002832022B3B3710D7365D4A06CD0D17960D036632AEC24BED7AE94F72"
+    },
+    {
+      "path": "evidence/l02-audit/health.json",
+      "sha256": "9AFCCDF2E97831E910DB693F112C21082E5DB7853F09DAE8B8498446208F0F99"
+    },
+    {
+      "path": "evidence/l02-audit/assembled-prompt.json",
+      "sha256": "A6256A8D8D2DCA0FE0B7C8D56CF66AC4B0DF4EA0B2A8DEC39AD5C7CEC0494BB5"
+    },
+    {
+      "path": "evidence/l02-audit/C-01-run3.trace.json",
+      "sha256": "01CDE9392DAC9526A83E22B0A51B2C903F39A730E503E5CBD17356BBE5202351"
+    }
+  ]
+}
