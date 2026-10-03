@@ -1,6 +1,6 @@
 # ДЗ №1 — Quality Bar Proposal
 
-Навігація для перевірки: [артефакти ДЗ №1](HOMEWORK-01-README.md). Здача — через гілку roman-olshevskyi/labs.
+Навігація для перевірки: [артефакти ДЗ №1](HOMEWORK-01-README.md). Здача — через гілку main.
 
 Автор: Roman Olshevskyi. Основний документ: [quality-bar-proposal.md](quality-bar-proposal.md).
 Числа отримано власним прогоном 2026-10-03: clean ×2 і lesson-02 ×3, 13 кейсів, 65 відповідей.
@@ -70,7 +70,7 @@ Python локально не потрібен: скрипт запускаєть
 
 1. Підняти локальний стенд: у `~/paypilot/paypilot-stand` — `docker compose up -d --build`, потім `docker compose exec stand python scripts/doctor.py`.
 2. Склонувати цей репозиторій поруч зі стендом:
-   `git clone https://github.com/sergeytkachenko/paypilot-l02-eval.git ~/paypilot/l02`
+   `git clone https://github.com/roman-olshevskiy/paypilot-l02-eval.git ~/paypilot/l02`
 3. `cd ~/paypilot/l02`, `cp .env.example .env`, вписати в `.env`
    ключ судді (`STAND_DIR` за замовчуванням уже `../paypilot-stand`).
 4. `docker compose build` — один раз.
@@ -105,7 +105,7 @@ Python локально не потрібен: скрипт запускаєть
 
 ```bash
 mkdir -p ~/paypilot
-git clone https://github.com/sergeytkachenko/paypilot-l02-eval.git ~/paypilot/l02
+git clone https://github.com/roman-olshevskiy/paypilot-l02-eval.git ~/paypilot/l02
 cd ~/paypilot/l02
 cp .env.example .env        # впиши STAND_DIR і ключ судді
 docker compose build        # один раз, близько хвилини
