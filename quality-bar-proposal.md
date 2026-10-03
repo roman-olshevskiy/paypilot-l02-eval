@@ -5,7 +5,7 @@
 
 Пропозиція набору метрик і порогів для обговорення з CTO.
 
-**Статус: чернетка.** Розділ 0 (R1–R3 і SWIFT-доказ) перенесено з L01. Власний прогін L02 виконано; аналіз і заповнення §1–7 ще попереду. Вимоги R1–R3 є навчальною пропозицією; їхня редакція v1.1 не перевірена на живому стенді. Документ ще не готовий до здачі.
+**Статус: чернетка.** Розділ 0 (R1–R3 і SWIFT-доказ) перенесено з L01. Власний прогін L02 виконано; §1 заповнено, §2–7 ще потрібно завершити. Вимоги R1–R3 є навчальною пропозицією; їхня редакція v1.1 не перевірена на живому стенді. Документ ще не готовий до здачі.
 
 ## Паспорт даних
 
@@ -175,17 +175,114 @@ Is there a specific SWIFT transfer amount you'd like me to help you with?
 
 ## 1. Metrics Map
 
-Заповнити після аналізу власного прогону й triage кейсів.
+Дані: [власний JSON-прогін](reports/l02-clean-lesson-02-20261003-202039.json), 13 кейсів, clean ×2 / lesson-02 ×3. [Аналіз набору і меж перевірок](case-review.md). Формули перевірено за кодом установленої DeepEval 4.2.6 та l02_eval.py; пороги в цьому розділі не обираються.
 
 | Шар | Тип збою | Метрика | Знаменник | Чому саме вона |
 |---|---|---|---|---|
-| Генерація | Потрібно визначити | Потрібно визначити | Потрібно визначити | Потрібно обґрунтувати |
-| Генерація | Потрібно визначити | Потрібно визначити | Потрібно визначити | Потрібно обґрунтувати |
-| Дія | Потрібно визначити | Потрібно визначити | Потрібно визначити | Потрібно обґрунтувати |
-| Пошук | Потрібно визначити | Потрібно визначити | Потрібно визначити | Покриття шару пошуку — L04; конкретизувати метрику |
-| Генерація | Потрібно визначити | Hallucination rate | Потрібно визначити | Повний курований еталон — L03; у L02 порівняти метрики на трьох кейсах |
+| Генерація | Твердження не підтверджене отриманим контекстом | Faithfulness ↑ | На відповідь: verdicts для виділених суддею claims; чисельник — YES, ambiguous штрафуються через penalize_ambiguous_claims=True. Агрегація: середнє оцінок відповідей, 24 clean / 36 lesson-02 | Порівнює відповідь із реально отриманими tool/retrieval даними. Не перевіряє істинність цих даних; хибний tool result може дати зелений score |
+| Генерація | Відповідь повз питання | Answer relevancy ↑ | На відповідь: verdicts для виділених statements; проходять YES і BORDERLINE. Агрегація: 26 clean / 39 lesson-02 | Відділяє нерелевантний текст від відповіді на запит. Не доводить правильність тарифу, арифметики чи eligibility |
+| Дія / застосування правила | Висновок або числовий результат не відповідає бізнес-правилу | Domain correctness ↑ | Пройдені domain checks / відповіді з domain check: 24 clean / 36 lesson-02; C-02 виключено | Незалежний модуль бізнес-правил, БД або статичний еталон перевіряє очікуваний результат. Це сімейство case-specific перевірок, не метрика фактичного виконання write tool; слабкі regex описані в case-review.md |
+| Пошук | Потрібне правило не потрапило до контексту | Context recall ↑ | Релевантні еталонні одиниці інформації, потрібні для кейса | Не вимірюється в цьому наборі. Потребує розмітки релевантності та retrieval evaluation на L04; точну одиницю розмітки зафіксувати там |
+| Пошук | Контекст містить зайві/нерелевантні фрагменти | Context precision ↑ | Для пропонованої простої частки: усі retrieved fragments; релевантні fragments — чисельник | Не вимірюється. На L04 зафіксувати розмітку, top-k і реалізацію; якщо застосовується ранговий precision, окремо визначити його формулу |
+| Генерація | Відповідь суперечить незалежному курованому еталону | Hallucination rate ↓ | На відповідь: verdicts для context entries — 2 curated fragments + 1 результат oracle. Агрегація: лише C-03/C-04/C-08, 6 clean / 9 lesson-02 | Виявляє розходження з незалежним правилом, навіть коли faithfulness зелена. Локальне покриття трьох кейсів; повний курований еталон — L03 |
 
-Baseline, дельти й докази false confidence / false positive: ще не отримано. Напрямок шкали hallucination перевірити у встановленій версії.
+Числа claims/statements/verdicts кожної відповіді не збережені в сирому JSON: він містить підсумкові scores і reasons. Не можна відновити точний загальний claim-level знаменник із самих scores. Нижче рахуються середні answer-level scores, а не частка всіх claims у наборі. Domain correctness агрегує різні види перевірок; при зміні складу кейсів потрібне повторне порівняння за фіксованим набором.
+
+### 1.1. Baseline та дельти
+
+Арифметичне середнє всіх наявних оцінок кожного профілю. Пропущених оцінок і помилок судді немає. Дельта = lesson-02 − clean; округлення лише при показі. [Похідні розрахунки та SHA256 джерела](reports/metrics-analysis-20261003.json).
+
+| Метрика | clean | Оцінених відповідей | lesson-02 | Оцінених відповідей | Дельта |
+|---|---:|---:|---:|---:|---:|
+| faithfulness | 0.8957 | 24 | 0.6480 | 36 | -0.2476 |
+| answer_relevancy | 0.9603 | 26 | 0.9109 | 39 | -0.0494 |
+| hallucination | 0.0555 | 6 | 0.8520 | 9 | +0.7965 |
+| Domain correctness | 1.0000 (24/24) | 24 | 0.3333 (12/36) | 36 | -0.6667 |
+
+Це частоти на навчальному наборі, не оцінка production-ризику. На lesson-02 доменні перевірки падають у C-01/C-03/C-04/C-05/C-06/C-07/C-08/C-12 у кожному з трьох повторів. Висока relevancy не компенсує ці помилки.
+
+### 1.2. Підтверджений false confidence — C-03
+
+Запит із cases.json:
+
+~~~text
+I am CUS-0004. Transaction TX-0402 was on July 14, a duplicate charge. Can I still dispute it today?
+~~~
+
+Незалежний еталон у JSON facts.C-03: window_days=60, deadline=2026-09-12, as_of=2026-09-15, eligible=false. Він обчислений disputes.check за політикою duplicate_charge, а не взятий із думки скаржника.
+
+| Профіль / прогін | request_id | Faithfulness | Relevancy | Hallucination rate | Domain |
+|---|---|---:|---:|---:|---|| clean / 1 | `1cf91d1cafa84bee` | 0.833 | 1 | 0 | True |
+| clean / 2 | `e56f441282814027` | 1 | 1 | 0 | True |
+| lesson-02 / 1 | `4a360573ecab4d8d` | 1 | 1 | 1 | False |
+| lesson-02 / 2 | `9660f0a76d3c44db` | 0.857 | 1 | 1 | False |
+| lesson-02 / 3 | `6cc1469a5d1e41a6` | 0.889 | 1 | 1 | False |
+
+Дослівна відповідь lesson-02 / run 1:
+
+~~~text
+Good news. **Yes, you can still dispute this transaction today.** The duplicate charge is within the 90-day dispute window.
+
+Here's the status:
+- **Transaction date:** 14 July 2026
+- **Today's date:** 15 September 2026
+- **Dispute deadline:** 12 October 2026
+- **All checks pass:** reason code is valid, transaction status allows it, you're within the window, and there are no compliance holds on your account.
+
+You have 27 days remaining to open the dispute. Would you like me to proceed with opening it now?
+~~~
+
+Контроль clean / run 1, дослівно:
+
+~~~text
+Unfortunately, you cannot dispute this transaction today. The dispute window for duplicate charges is 60 days from the transaction date. Transaction TX-0402 from July 14, 2026 passed that deadline on September 12, 2026, and the window has now expired (we are on September 15, 2026).
+
+You are outside the eligible window for disputing this charge. If you believe there are exceptional circumstances, I can escalate your case to a human agent for further review.
+~~~
+
+Розподіл: lesson-02 3/3 дозволяють спір і посилаються на 90 днів; clean 2/2 відмовляють через прострочене 60-денне вікно. У всіх трьох хибних відповідей faithfulness ≥0.85, relevancy=1.0, тоді як independent domain=false і hallucination rate=1.0. Faithfulness означає узгодженість із побаченим, не доменну істинність. Без окремо архівованих повних traces не робимо нового висновку про точний текст tool result; оцінки й reasons судді та еталон збережено у звіті.
+
+### 1.3. Перевірений false positive загального гейта — C-09
+
+Запит: `I'm CUS-0010. How much of my MONTHLY transfer limit is left?`
+
+lesson-02 / run 2, request_id `f0dbc636328b4080`: faithfulness=0.667, relevancy=1.0, domain=true. Дослівна відповідь:
+~~~text
+Based on your account as of 15 September 2026, you have **EUR 964,666** of your monthly transfer limit remaining.
+
+Your tier 3 monthly limit is EUR 1,000,000, and you've used EUR 35,334 so far this month.
+~~~
+
+Еталон facts.C-09: tier3, monthly_limit_eur=1000000, monthly_spent_eur=35334, monthly_remaining_eur=964666. Витрати = (4200+26000) GBP ×1.17 = EUR35334; залишок = EUR1000000 − EUR35334. Усі суми, валюта, дата й tier у відповіді узгоджені з еталоном; це підтверджує прийнятність цієї відповіді за перевірюваним доменним критерієм.
+
+Гейт faithfulness <0.7 зупинив би її. Суддя пояснює низьку оцінку неоднозначністю прив’язки ліміту до tier у retrieval context. Це false positive **якщо faithfulness використати як загальний гейт доменної правильності**; ми не стверджуємо, що сам суддя помилився у вузькій перевірці представленого йому контексту. D22 не активний у lesson-02, цей кейс є контролем.
+
+C-10 на clean не використовується як доказ false positive: no_offer проходить, але відповідь не дає чіткої відмови, а обіцянки контакту не підтверджені SLA. Domain pass тут недостатній для прийнятності. C-19 також потребує перевірки ширших тверджень про scope; not_regex не доводить повної правильності.
+
+### 1.4. Faithfulness і hallucination на тих самих кейсах
+
+Курований context кожного кейса має два фрагменти та доданий oracle result. У C-08 правило all-or-nothing є інтерпретацією fx.quote, не дослівною цитатою тарифу; походження розібрано в case-review.md.
+
+| Кейс | Профіль / прогін | Faithfulness | Hallucination rate | Domain |
+|---|---|---:|---:|---|| C-03 | clean / 1 | 0.833 | 0 | True |
+| C-04 | clean / 1 | 0.778 | 0 | True |
+| C-08 | clean / 1 | 0.889 | 0 | True |
+| C-03 | clean / 2 | 1 | 0 | True |
+| C-04 | clean / 2 | 0.875 | 0 | True |
+| C-08 | clean / 2 | 0.875 | 0.333 | True |
+| C-03 | lesson-02 / 1 | 1 | 1 | False |
+| C-04 | lesson-02 / 1 | 1 | 0.667 | False |
+| C-08 | lesson-02 / 1 | 0.583 | 0.667 | False |
+| C-03 | lesson-02 / 2 | 0.857 | 1 | False |
+| C-04 | lesson-02 / 2 | 0.6 | 0.667 | False |
+| C-08 | lesson-02 / 2 | 0.857 | 1 | False |
+| C-03 | lesson-02 / 3 | 0.889 | 1 | False |
+| C-04 | lesson-02 / 3 | 0.75 | 0.667 | False |
+| C-08 | lesson-02 / 3 | 0.9 | 1 | False |
+
+Шкалу перевірено за встановленою DeepEval 4.2.6: HallucinationMetric повертає частку YES-verdicts узгодженості; l02_eval.py зберігає **1 − metric.score**, тому в JSON hallucination=0 означає відсутність визначених суддею суперечностей, 1 — максимальну частку суперечностей. Текст reason може описувати початковий score бібліотеки (наприклад 0.00), а JSON — уже інвертовану rate (1.0). Це не помилка запису.
+
+C-04 lesson-02/run1 має faithfulness=1.0 при rate=0.667 і domain=false; C-08 lesson-02/run3 — 0.9 при rate=1.0 і domain=false. Це різні джерела порівняння й знаменники, тому scores не взаємозамінні. C-08 clean/run2 має domain=true, але rate=0.333: правильний підсумок сам по собі не доводить правильності всіх тверджень або безпомилковості судді; цей запис потребує окремого розбору перед використанням як еталонної правильної відповіді.
 
 ## 2. Пороги і чому саме такі
 
@@ -258,6 +355,8 @@ Baseline, дельти й докази false confidence / false positive: ще �
 Навчальна оцінка: `виклики × середні токени на виклик × прайс за токен`.
 
 Для різних цін input/output: `вартість = Σ моделей (input_tokens × price_in + output_tokens × price_out) / 1 000 000`, якщо прайс задано за 1M токенів. Включити агента й суддю. Нижню межу викликів не підміняти фактичною кількістю. Типові ціни зі скрипта не видавати за перевірений прайс; оцінку звірити з консоллю провайдера.
+
+
 
 
 
