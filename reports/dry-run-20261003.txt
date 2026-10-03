@@ -1,0 +1,20 @@
+ Container paypilot-l02-eval-eval-run-473343e5c9e3 Creating 
+ Container paypilot-l02-eval-eval-run-473343e5c9e3 Created 
+id    check     metrics                                     expected
+C-01  regex     faithfulness,answer_relevancy               swift_flat_eur = 15.00, swift_pct = 0.30
+C-02  —         answer_relevancy                            —
+C-03  no_offer  faithfulness,answer_relevancy,hallucination eligible = False
+C-04  percent   faithfulness,answer_relevancy,hallucination spread_pct = 0.90
+C-05  number    faithfulness,answer_relevancy               final_amount = 6,463.04
+C-06  number    faithfulness,answer_relevancy               source = stand DB, accounts ACC-1003
+C-07  number    faithfulness,answer_relevancy               final_amount = 2,154.35
+C-08  number    faithfulness,answer_relevancy,hallucination final_amount = 2,154.35
+C-09  number    faithfulness,answer_relevancy               monthly_remaining_eur = 964,666.00
+C-10  no_offer  faithfulness,answer_relevancy               eligible = False
+C-11  days      faithfulness,answer_relevancy               window_days = 120
+C-12  days      faithfulness,answer_relevancy               window_days = 60
+C-19  not_regex faithfulness,answer_relevancy               product_exists = False
+
+13 кейсів × (clean ×2 + lesson-02 ×3) = 65 звернень до агента (кожне — зазвичай 2–3 llm.call)
+формула лонгріда: 205 викликів
+DeepEval насправді: ≈465 викликів судді + ≈130–195 llm.call агента

@@ -1,0 +1,68 @@
+{
+  "copied_on": "2026-10-03",
+  "source_repository": "paypilot-stand",
+  "source_batch": "l01-rebuild-5109f05428d545d1b9d5b8a8568884b7",
+  "purpose": "Portable sources for Quality Bar Proposal section 0.2; existing L01 captures, no new run",
+  "files": [
+    {
+      "file": "evidence/l01-swift/swift-1.response.json",
+      "source": "course-work/L01/evidence/api-run/20260929-210554-1af4ec6025904227822c32c0c1492230/Swift_FiveIndependentRuns_AndCleanControl/swift-1.response.json",
+      "sha256": "19AD4A8E7CF8297A21BE8F9BF30DB7E18B0FAF1FB23E0CADE3C7C611122E7767"
+    },
+    {
+      "file": "evidence/l01-swift/swift-1.trace.json",
+      "source": "course-work/L01/evidence/api-run/20260929-210554-1af4ec6025904227822c32c0c1492230/Swift_FiveIndependentRuns_AndCleanControl/swift-1.trace.json",
+      "sha256": "85A98A01552FC25230652A12ADB622B243ED904CCF4266E4205A9E58E8C8BA8D"
+    },
+    {
+      "file": "evidence/l01-swift/swift-2.response.json",
+      "source": "course-work/L01/evidence/api-run/20260929-210554-1af4ec6025904227822c32c0c1492230/Swift_FiveIndependentRuns_AndCleanControl/swift-2.response.json",
+      "sha256": "7000694950F865ABF5D6BAF10AA2085AF5D32E70B411A6ACA07EBDA54A0216B4"
+    },
+    {
+      "file": "evidence/l01-swift/swift-2.trace.json",
+      "source": "course-work/L01/evidence/api-run/20260929-210554-1af4ec6025904227822c32c0c1492230/Swift_FiveIndependentRuns_AndCleanControl/swift-2.trace.json",
+      "sha256": "CD9E266159DF0E19370D955495728D408FB612464CBC2B9E49A0207AD7138C35"
+    },
+    {
+      "file": "evidence/l01-swift/swift-3.response.json",
+      "source": "course-work/L01/evidence/api-run/20260929-210554-1af4ec6025904227822c32c0c1492230/Swift_FiveIndependentRuns_AndCleanControl/swift-3.response.json",
+      "sha256": "5FEEAA52ED53AB2EBB97A7E262A8A2C69907F46B54B89E9ECA566532AF29DDD6"
+    },
+    {
+      "file": "evidence/l01-swift/swift-3.trace.json",
+      "source": "course-work/L01/evidence/api-run/20260929-210554-1af4ec6025904227822c32c0c1492230/Swift_FiveIndependentRuns_AndCleanControl/swift-3.trace.json",
+      "sha256": "AB9D8A86E4282618B7CD4F8DFB1AE0C759D17E95E4F87D1367BB00932FF0E81F"
+    },
+    {
+      "file": "evidence/l01-swift/swift-4.response.json",
+      "source": "course-work/L01/evidence/api-run/20260929-210554-1af4ec6025904227822c32c0c1492230/Swift_FiveIndependentRuns_AndCleanControl/swift-4.response.json",
+      "sha256": "3FCA4362C6964DFF1B0AD6526414B43127F7DAEBAD5D503CEF7F5A814B453529"
+    },
+    {
+      "file": "evidence/l01-swift/swift-4.trace.json",
+      "source": "course-work/L01/evidence/api-run/20260929-210554-1af4ec6025904227822c32c0c1492230/Swift_FiveIndependentRuns_AndCleanControl/swift-4.trace.json",
+      "sha256": "0456299E6711463EEB82235B45A85191FEB570863462827E6FDFF7359B2B9DAC"
+    },
+    {
+      "file": "evidence/l01-swift/swift-5.response.json",
+      "source": "course-work/L01/evidence/api-run/20260929-210554-1af4ec6025904227822c32c0c1492230/Swift_FiveIndependentRuns_AndCleanControl/swift-5.response.json",
+      "sha256": "70989A03610A49528E522B7F73DBD11C89D3F5EB8929E8E31B528CA46A0154C3"
+    },
+    {
+      "file": "evidence/l01-swift/swift-5.trace.json",
+      "source": "course-work/L01/evidence/api-run/20260929-210554-1af4ec6025904227822c32c0c1492230/Swift_FiveIndependentRuns_AndCleanControl/swift-5.trace.json",
+      "sha256": "D5EFA1DD5E2ABB2A0D44E6C377F20399DB2D3E04379C6B8E7925823E4A8BB5D7"
+    },
+    {
+      "file": "evidence/l01-swift/swift-clean-control.response.json",
+      "source": "course-work/L01/evidence/api-run/20260929-210554-1af4ec6025904227822c32c0c1492230/Swift_FiveIndependentRuns_AndCleanControl/swift-clean-control.response.json",
+      "sha256": "B06F04790F6934070623C00514062EC54A67401C619F279E927A3CDCF7CA3D93"
+    },
+    {
+      "file": "evidence/l01-swift/swift-clean-control.trace.json",
+      "source": "course-work/L01/evidence/api-run/20260929-210554-1af4ec6025904227822c32c0c1492230/Swift_FiveIndependentRuns_AndCleanControl/swift-clean-control.trace.json",
+      "sha256": "D33E17C0D55A4ED3FBC2DFF7F1D9C878F3E958434EE43FF7FEDE5D25C595A051"
+    }
+  ]
+}

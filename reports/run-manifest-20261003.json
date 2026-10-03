@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-03",
+  "command": "docker compose run --rm -T eval --profiles clean,lesson-02 --runs 3 --baseline-runs 2",
+  "exit_code": 0,
+  "clock": "2026-09-15T10:00:00Z",
+  "judge_model": "claude-haiku-4-5",
+  "records": 65,
+  "metric_scores": 140,
+  "metric_errors": 0,
+  "files": [
+    {
+      "path": "cases.json",
+      "sha256": "0A14FCD5BD84F5F2682820F9F1616C27AC95AA16E10AD4A7D090B954364004C8"
+    },
+    {
+      "path": "l02_eval.py",
+      "sha256": "5D5B5F9EDC4315F5BB8D3C1979A8EEFDB401CAA8F7C4EDA4ECC568AAFB914203"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "65B68882054E2FFC5A26E5E47DCD9735D52620E5AEE122DF4A408DF88BFA6939"
+    },
+    {
+      "path": "Dockerfile",
+      "sha256": "E3E68B013544B3DD3E034770D61A46D1943B30466490715128D0ED65B7359DCE"
+    },
+    {
+      "path": "docker-compose.yml",
+      "sha256": "60E89E5C141A6EA2B82B643249D58DFE68A6802E5819B723EB1F295060FEBD76"
+    },
+    {
+      "path": "reports/dry-run-20261003.txt",
+      "sha256": "AB452EF410A68FED207B989021C0C0BF6455CF7F77D6087E99E1AF429D6A4448"
+    },
+    {
+      "path": "reports/full-run-20261003.txt",
+      "sha256": "6872B47A053870C007CA5F9169E8D1FE1BD983C81D4EE5830AE3F2ECBB696E36"
+    },
+    {
+      "path": "reports/l02-clean-lesson-02-20261003-202039.json",
+      "sha256": "64FF3EC4AEED691687DD01CAC4736B775A87E4F756DD35121A73556943350292"
+    }
+  ]
+}

@@ -1,4 +1,6 @@
 .env
-reports/
+reports/*
+!reports/*.json
+!reports/*-20261003.txt
 .deepeval/
 __pycache__/

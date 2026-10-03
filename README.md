@@ -1,3 +1,58 @@
+# ДЗ №1 — Quality Bar Proposal
+
+Навігація для перевірки: [артефакти ДЗ №1](HOMEWORK-01-README.md). Здача — через гілку roman-olshevskyi/labs.
+
+Автор: Roman Olshevskyi. Основний документ: [quality-bar-proposal.md](quality-bar-proposal.md).
+Числа отримано власним прогоном 2026-10-03: clean ×2 і lesson-02 ×3, 13 кейсів, 65 відповідей.
+Суддя: Anthropic claude-haiku-4-5; CLOCK_OVERRIDE=2026-09-15T10:00:00Z.
+Сирий звіт: [reports/l02-clean-lesson-02-20261003-202039.json](reports/l02-clean-lesson-02-20261003-202039.json).
+Походження й SHA256 використаних файлів: [run manifest](reports/run-manifest-20261003.json).
+Domain: clean 24/24, lesson-02 12/36; оцінка вартості ≈USD0.94 збігається з записаними показниками білінгу.
+Evidence pass означає успішний збір доказів, а не правильність відповіді. R1–R3 та гіпотеза §6 ще не перевірені після правки.
+
+## Відтворення нашого прогону
+
+Потрібні Docker, окремий локальний PayPilot stand з live-провайдером Anthropic і каталог stand поруч із цим репозиторієм.
+Створіть локальний .env із .env.example; задайте STAND_DIR=../paypilot-stand,
+EVAL_STAND_URL=http://host.docker.internal:8000, JUDGE_MODEL=claude-haiku-4-5,
+CLOCK_OVERRIDE=2026-09-15T10:00:00Z і ключ Anthropic. Ключ агента також налаштуйте локально на stand.
+.env і ключі не входять до комплекту.
+
+З кореня цього репозиторію:
+
+~~~powershell
+docker compose build eval
+docker compose run --rm -T eval --profiles clean,lesson-02 --runs 3 --baseline-runs 2 --dry-run
+docker compose run --rm -T eval --profiles clean,lesson-02 --runs 3 --baseline-runs 2
+~~~
+
+Runner послідовно перемикає глобальні профілі, скидає дані й установлює clock; наприкінці залишає lesson-02.
+Не запускайте інші набори паралельно на тому самому стенді. Live-прогін витрачає API-токени; нові відповіді й scores можуть відрізнятися.
+Усі звернення до стенду в нашій роботі виконуються через реальні тести або eval-runner.
+
+Для відтворення read-only аудиту §6 **після повного eval**, коли stand має lesson-02:
+
+~~~powershell
+docker compose run --rm -T --entrypoint python eval -m unittest discover -s tests -p test_l02_audit_evidence.py -v
+~~~
+
+Аудит використовує історичний request_id зі збереженого прогону. На новій БД цього trace може не бути; тоді
+перевіряйте архівований evidence/l02-audit/C-01-run3.trace.json, а новий кейс потребує нового request_id.
+Оригінальний тест не гарантує відтворення історичного trace на іншому стенді.
+
+## Комплект для перевірки
+
+- quality-bar-proposal.md — розділи 0–7.
+- reports/ — сирий eval JSON, журнали та окремо позначені похідні розрахунки.
+- cases.json, l02_eval.py, requirements.txt, Dockerfile, docker-compose.yml — файли відтворення.
+- evidence/ — переносні докази L01 SWIFT і аудит L02.
+- case-review.md, run-summary.md — пояснення відбору та прогону.
+
+Повні документи L01 лишаються у paypilot-stand і до архіву цього ДЗ не включені.
+Нижче збережено загальну інструкцію вихідного навчального репозиторію; параметри саме нашого прогону наведено вище.
+
+---
+
 # L02 · Скрипт метрик
 
 Три текстові метрики DeepEval (faithfulness, answer relevancy, hallucination
@@ -129,6 +184,6 @@ docker compose --profile stand down
 | `--profiles clean,lesson-02` | профілі по черзі; перший — baseline |
 | `--runs 3` / `--baseline-runs 2` | прогони профілю заняття / прогони `clean` |
 | `--only C-03,C-04` | лише ці кейси |
-| `--metrics domain` | лише доменна коректність: без судді, безкоштовно і миттєво |
+| `--metrics domain` | лише доменна коректність: без судді; live-генерація агента витрачає токени |
 | `--workers 4` | паралельні кейси; при rate limit зменш |
 | `--dry-run` | план і кількість викликів, нічого не викликає |
