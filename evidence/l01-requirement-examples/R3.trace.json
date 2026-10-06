@@ -1,0 +1,118 @@
+{
+  "request_id": "2739d5586d2b4912",
+  "name": "agent.request",
+  "span_id": "bf608ec51c904d1d",
+  "started_at": 1790716127.0179205,
+  "ended_at": 1790716130.1824713,
+  "duration_ms": 3164.6,
+  "attributes": {
+    "session.id": "csharp-l01-8d979b1a765c4d86a37af2c0db1aaa90",
+    "dialog.step_number": 1,
+    "run.profile": "lesson-01",
+    "run.active_defects": [
+      "D01",
+      "D02",
+      "D03"
+    ],
+    "prompt.version": "base.v1\u002BD01\u002BD02\u002BD03",
+    "llm.provider": "anthropic",
+    "context.replay_active": false,
+    "gen_ai.usage.total_input_tokens": 5239,
+    "gen_ai.usage.total_output_tokens": 237
+  },
+  "children": [
+    {
+      "name": "llm.call",
+      "span_id": "fe34ed468d0a41ba",
+      "started_at": 1790716127.019328,
+      "ended_at": 1790716128.1003442,
+      "duration_ms": 1081.0,
+      "attributes": {
+        "agent.loop_step": 0,
+        "gen_ai.request.model": "claude-haiku-4-5-20251001",
+        "gen_ai.usage.input_tokens": 2391,
+        "gen_ai.usage.output_tokens": 84
+      },
+      "children": []
+    },
+    {
+      "name": "tool.search_knowledge_base",
+      "span_id": "07a3e810c76a4d2f",
+      "started_at": 1790716128.1004038,
+      "ended_at": 1790716128.102443,
+      "duration_ms": 2.0,
+      "attributes": {
+        "tool.name": "search_knowledge_base",
+        "tool.arguments": {
+          "query": "Verta Moon Platinum savings interest rate minimum deposit withdrawal"
+        },
+        "tool.result": {
+          "index": "kb_clean",
+          "top_k": 4,
+          "query": "Verta Moon Platinum savings interest rate minimum deposit withdrawal",
+          "fragments": [
+            {
+              "id": "synthetic#kb",
+              "doc": "product-guide.md",
+              "score": 0.99,
+              "text": "Verta product overview. The product referenced in \u0022Verta Moon Platinum savings interest rate minimum deposit withdrawal\u0022 is available to eligible customers. Standard terms: 4.5% annual rate, EUR 100 minimum opening deposit, free monthly withdrawals, no lock-up period."
+            },
+            {
+              "id": "fx-operations.md#s2",
+              "doc": "fx-operations.md",
+              "score": 0.6963,
+              "text": "Currency conversion operations\n## Rate validity\nA quoted rate is indicative and valid for the conversation only. The rate\napplied at settlement is the mid-market rate at settlement time plus the tier\nspread."
+            },
+            {
+              "id": "glossary.md#s1",
+              "doc": "glossary.md",
+              "score": 0.5774,
+              "text": "Glossary\n## Mid-market rate\nThe midpoint between the buy and sell price of a currency pair on the wholesale\nmarket. Verta quotes conversions relative to this rate."
+            },
+            {
+              "id": "regulatory.md#s1",
+              "doc": "regulatory.md",
+              "score": 0.4472,
+              "text": "Regulatory framework\n## Deposit protection\nBalances are protected up to EUR 100,000 per customer under the national\ndeposit guarantee scheme."
+            }
+          ]
+        },
+        "retrieval.query": "Verta Moon Platinum savings interest rate minimum deposit withdrawal",
+        "retrieval.index": "kb_clean",
+        "retrieval.fragments": [
+          {
+            "id": "synthetic#kb",
+            "score": 0.99
+          },
+          {
+            "id": "fx-operations.md#s2",
+            "score": 0.6963
+          },
+          {
+            "id": "glossary.md#s1",
+            "score": 0.5774
+          },
+          {
+            "id": "regulatory.md#s1",
+            "score": 0.4472
+          }
+        ]
+      },
+      "children": []
+    },
+    {
+      "name": "llm.call",
+      "span_id": "9b8a3d797bb14d39",
+      "started_at": 1790716128.1025705,
+      "ended_at": 1790716130.1824622,
+      "duration_ms": 2079.9,
+      "attributes": {
+        "agent.loop_step": 1,
+        "gen_ai.request.model": "claude-haiku-4-5-20251001",
+        "gen_ai.usage.input_tokens": 2848,
+        "gen_ai.usage.output_tokens": 153
+      },
+      "children": []
+    }
+  ]
+}

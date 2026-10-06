@@ -1,0 +1,133 @@
+{
+  "request_id": "d583b1210dd744e1",
+  "name": "agent.request",
+  "span_id": "0c876f00eef84b81",
+  "started_at": 1790716121.053177,
+  "ended_at": 1790716124.4173024,
+  "duration_ms": 3364.1,
+  "attributes": {
+    "session.id": "csharp-l01-edba4b33d5d84bc782551ad065fb4b3f",
+    "dialog.step_number": 1,
+    "run.profile": "lesson-01",
+    "run.active_defects": [
+      "D01",
+      "D02",
+      "D03"
+    ],
+    "prompt.version": "base.v1\u002BD01\u002BD02\u002BD03",
+    "llm.provider": "anthropic",
+    "context.replay_active": false,
+    "gen_ai.usage.total_input_tokens": 7630,
+    "gen_ai.usage.total_output_tokens": 240
+  },
+  "children": [
+    {
+      "name": "llm.call",
+      "span_id": "52f8f65f4df54ad4",
+      "started_at": 1790716121.054848,
+      "ended_at": 1790716122.0017366,
+      "duration_ms": 946.9,
+      "attributes": {
+        "agent.loop_step": 0,
+        "gen_ai.request.model": "claude-haiku-4-5-20251001",
+        "gen_ai.usage.input_tokens": 2376,
+        "gen_ai.usage.output_tokens": 60
+      },
+      "children": []
+    },
+    {
+      "name": "tool.get_account",
+      "span_id": "36045b4332b44298",
+      "started_at": 1790716122.0017915,
+      "ended_at": 1790716122.0024147,
+      "duration_ms": 0.6,
+      "attributes": {
+        "tool.name": "get_account",
+        "tool.arguments": {
+          "customer_id": "CUS-0001"
+        },
+        "tool.result": {
+          "accounts": [
+            {
+              "id": "ACC-1001",
+              "customer_id": "CUS-0001",
+              "currency": "EUR",
+              "balance": 2450.3,
+              "tier": "tier1",
+              "holder": "Alice Novak"
+            }
+          ]
+        }
+      },
+      "children": []
+    },
+    {
+      "name": "llm.call",
+      "span_id": "95e8843e682b452f",
+      "started_at": 1790716122.00251,
+      "ended_at": 1790716122.9675784,
+      "duration_ms": 965.1,
+      "attributes": {
+        "agent.loop_step": 1,
+        "gen_ai.request.model": "claude-haiku-4-5-20251001",
+        "gen_ai.usage.input_tokens": 2505,
+        "gen_ai.usage.output_tokens": 67
+      },
+      "children": []
+    },
+    {
+      "name": "tool.get_transactions",
+      "span_id": "9d05253b035048e1",
+      "started_at": 1790716122.9676876,
+      "ended_at": 1790716122.9684715,
+      "duration_ms": 0.8,
+      "attributes": {
+        "tool.name": "get_transactions",
+        "tool.arguments": {
+          "account_id": "ACC-1001"
+        },
+        "tool.result": {
+          "transactions": [
+            {
+              "id": "TX-0102",
+              "account_id": "ACC-1001",
+              "date": "2026-09-14",
+              "amount": 1200.0,
+              "currency": "EUR",
+              "merchant": "Rent \u2014 Hausverwaltung Mitte",
+              "direction": "out",
+              "transfer_type": "sepa",
+              "status": "settled"
+            },
+            {
+              "id": "TX-0101",
+              "account_id": "ACC-1001",
+              "date": "2026-09-10",
+              "amount": 54.9,
+              "currency": "EUR",
+              "merchant": "GreenGrocer Berlin",
+              "direction": "out",
+              "transfer_type": "card",
+              "status": "settled"
+            }
+          ]
+        }
+      },
+      "children": []
+    },
+    {
+      "name": "llm.call",
+      "span_id": "43680f551efe4971",
+      "started_at": 1790716122.968581,
+      "ended_at": 1790716124.417267,
+      "duration_ms": 1448.7,
+      "attributes": {
+        "agent.loop_step": 2,
+        "gen_ai.request.model": "claude-haiku-4-5-20251001",
+        "gen_ai.usage.input_tokens": 2749,
+        "gen_ai.usage.output_tokens": 113
+      },
+      "children": []
+    }
+  ]
+}

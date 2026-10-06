@@ -1,0 +1,17 @@
+{
+  "profile": "lesson-01",
+  "question": "I\u0027m CUS-0001. Show my recent transactions.",
+  "session_id": "csharp-l01-edba4b33d5d84bc782551ad065fb4b3f",
+  "started_utc": "2026-09-29T21:08:41.0501167+00:00",
+  "response": {
+    "session_id": "csharp-l01-edba4b33d5d84bc782551ad065fb4b3f",
+    "request_id": "d583b1210dd744e1",
+    "answer": "Hello Alice! Here are your recent transactions:\n\n1. **14 Sep 2026** \u2014 Rent \u2014 Hausverwaltung Mitte  \n   \u20AC1,200.00 out (SEPA transfer, settled)\n\n2. **10 Sep 2026** \u2014 GreenGrocer Berlin  \n   \u20AC54.90 out (Card payment, settled)\n\nYour current balance is **\u20AC2,450.30**. Is there anything you\u0027d like to know about these transactions?",
+    "step_number": 1,
+    "elapsed_ms": 3364.1,
+    "usage": {
+      "input_tokens": 7630,
+      "output_tokens": 240
+    }
+  }
+}

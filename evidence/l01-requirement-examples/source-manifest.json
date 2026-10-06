@@ -1,0 +1,47 @@
+{
+  "method": "Byte-for-byte copy of existing L01 C# API-test evidence; no new stand requests",
+  "files": [
+    {
+      "requirement": "R1",
+      "source": "\\\\?\\D:\\neoversity\\paypilot-stand\\course-work\\L01\\evidence\\api-run\\20260929-210835-d13d6a5ee6f34af28a6f63f3faf6c6b8\\TargetedQuestion_SaveAnswerAndTools__transactions___I_m_CUS-0001__Show_my_recent_transactions___1_\\transactions-1.response.json",
+      "file": "evidence/l01-requirement-examples/R1.response.json",
+      "sha256": "e4b939bebeef61115bdf1b8278153cf8408f21de3c61e8780191a77392f7c63c",
+      "request_id": "d583b1210dd744e1"
+    },
+    {
+      "requirement": "R1",
+      "source": "\\\\?\\D:\\neoversity\\paypilot-stand\\course-work\\L01\\evidence\\api-run\\20260929-210835-d13d6a5ee6f34af28a6f63f3faf6c6b8\\TargetedQuestion_SaveAnswerAndTools__transactions___I_m_CUS-0001__Show_my_recent_transactions___1_\\transactions-1.trace.json",
+      "file": "evidence/l01-requirement-examples/R1.trace.json",
+      "sha256": "703efb845a6eda899eed33f93fa45f76503ffb09feeb3dc98af3b578fefc5313",
+      "request_id": "d583b1210dd744e1"
+    },
+    {
+      "requirement": "R2",
+      "source": "\\\\?\\D:\\neoversity\\paypilot-stand\\course-work\\L01\\evidence\\api-run\\20260929-210835-d13d6a5ee6f34af28a6f63f3faf6c6b8\\TargetedQuestion_SaveAnswerAndTools__specific-fee___I_m_CUS-0008__What_exact_Verta_fee_in_EUR_will_I_pay_for_a_EUR_1000_SWIFT_transfer__Please_include_the_flat_and_percentage_components___5_\\specific-fee-2.response.json",
+      "file": "evidence/l01-requirement-examples/R2.response.json",
+      "sha256": "b16ffb3b8a7902c1407ab43c69cf89fa77b5089de36646e44926536fb6fc5a51",
+      "request_id": "62061d0fcc2d402e"
+    },
+    {
+      "requirement": "R2",
+      "source": "\\\\?\\D:\\neoversity\\paypilot-stand\\course-work\\L01\\evidence\\api-run\\20260929-210835-d13d6a5ee6f34af28a6f63f3faf6c6b8\\TargetedQuestion_SaveAnswerAndTools__specific-fee___I_m_CUS-0008__What_exact_Verta_fee_in_EUR_will_I_pay_for_a_EUR_1000_SWIFT_transfer__Please_include_the_flat_and_percentage_components___5_\\specific-fee-2.trace.json",
+      "file": "evidence/l01-requirement-examples/R2.trace.json",
+      "sha256": "71007fb3624502fb04f91130f3f7d461431b87db8118c410de10c622344740dc",
+      "request_id": "62061d0fcc2d402e"
+    },
+    {
+      "requirement": "R3",
+      "source": "\\\\?\\D:\\neoversity\\paypilot-stand\\course-work\\L01\\evidence\\api-run\\20260929-210835-d13d6a5ee6f34af28a6f63f3faf6c6b8\\TargetedQuestion_SaveAnswerAndTools__moon-product___I_m_CUS-0001__What_is_the_interest_rate__minimum_deposit_and_withdrawal_policy_of_Verta_Moon_Platinum_savings___3_\\moon-product-1.response.json",
+      "file": "evidence/l01-requirement-examples/R3.response.json",
+      "sha256": "a80c61f8a3add24642a593193f2ff15e899077d503f5e4c24e9c9450acfda2fe",
+      "request_id": "2739d5586d2b4912"
+    },
+    {
+      "requirement": "R3",
+      "source": "\\\\?\\D:\\neoversity\\paypilot-stand\\course-work\\L01\\evidence\\api-run\\20260929-210835-d13d6a5ee6f34af28a6f63f3faf6c6b8\\TargetedQuestion_SaveAnswerAndTools__moon-product___I_m_CUS-0001__What_is_the_interest_rate__minimum_deposit_and_withdrawal_policy_of_Verta_Moon_Platinum_savings___3_\\moon-product-1.trace.json",
+      "file": "evidence/l01-requirement-examples/R3.trace.json",
+      "sha256": "41ee97093751d5c308a4723dfeac2a1a751ed3212df1aba39053c549cea0a1ca",
+      "request_id": "2739d5586d2b4912"
+    }
+  ]
+}

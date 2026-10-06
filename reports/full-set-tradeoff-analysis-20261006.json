@@ -1,0 +1,95 @@
+{
+  "source_report": "l02-clean-lesson-02-20261003-202039.json",
+  "source_sha256": "64ff3ec4aeed691687dd01cac4736b775a87e4f756dd35121a73556943350292",
+  "gate_rule": "faithfulness score < threshold; equality passes",
+  "scope": "Full set of recorded faithfulness scores, no retrospective case exclusion",
+  "interpretation": "Clean flags are not all verified false positives; domain checks do not establish complete response correctness",
+  "thresholds": [
+    {
+      "threshold": 0.7,
+      "caught_domain_failures": 9,
+      "domain_failure_denominator": 24,
+      "clean_flags": 2,
+      "clean_scored_denominator": 24,
+      "caught_request_ids": [
+        "f4e99c21763549a8",
+        "cdaa204f40e243fb",
+        "89dae252cc0a48a5",
+        "4a53ce394e3740f0",
+        "a348ee28ceba4a5f",
+        "c919de5c7d3144bb",
+        "65f8704458244b5d",
+        "9b404d6dfe0d4b30",
+        "ceab56bdf3be48d7"
+      ],
+      "clean_flag_request_ids": [
+        "24c701e0a0354d34",
+        "8576e8be16da443e"
+      ]
+    },
+    {
+      "threshold": 0.8,
+      "caught_domain_failures": 11,
+      "domain_failure_denominator": 24,
+      "clean_flags": 3,
+      "clean_scored_denominator": 24,
+      "caught_request_ids": [
+        "f4e99c21763549a8",
+        "cdaa204f40e243fb",
+        "89dae252cc0a48a5",
+        "4a53ce394e3740f0",
+        "a348ee28ceba4a5f",
+        "c919de5c7d3144bb",
+        "6f544562b32e4766",
+        "65f8704458244b5d",
+        "9b404d6dfe0d4b30",
+        "d799d2171e724c5f",
+        "ceab56bdf3be48d7"
+      ],
+      "clean_flag_request_ids": [
+        "e055598653d343b9",
+        "24c701e0a0354d34",
+        "8576e8be16da443e"
+      ]
+    },
+    {
+      "threshold": 0.9,
+      "caught_domain_failures": 17,
+      "domain_failure_denominator": 24,
+      "clean_flags": 11,
+      "clean_scored_denominator": 24,
+      "caught_request_ids": [
+        "f4e99c21763549a8",
+        "cdaa204f40e243fb",
+        "89dae252cc0a48a5",
+        "4a53ce394e3740f0",
+        "4fe030d8afef4db0",
+        "a348ee28ceba4a5f",
+        "9660f0a76d3c44db",
+        "c919de5c7d3144bb",
+        "6f544562b32e4766",
+        "65f8704458244b5d",
+        "285d888171054d5b",
+        "9b404d6dfe0d4b30",
+        "6cc1469a5d1e41a6",
+        "d799d2171e724c5f",
+        "1741efe70fd945e9",
+        "4007ea6eb0d144de",
+        "ceab56bdf3be48d7"
+      ],
+      "clean_flag_request_ids": [
+        "1cf91d1cafa84bee",
+        "e055598653d343b9",
+        "b819d2d5c11c4368",
+        "8edbe7d693e54fa0",
+        "24c701e0a0354d34",
+        "cfe79a347bf5438f",
+        "9778dcfb09a740da",
+        "70b326f070094f13",
+        "df4b7de7cf024c49",
+        "d9fdce07c6444914",
+        "8576e8be16da443e"
+      ]
+    }
+  ]
+}
