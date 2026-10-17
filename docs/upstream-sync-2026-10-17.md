@@ -17,3 +17,6 @@ Impact on HW1:
 - Quality-bar proposals remain proposals; no prompt fix or CI gate is deployed.
 
 Validation results are recorded in the PR.
+
+Validation: 3 offline unittest cases passed (stubbed SDK constructors, mocked HTTP); domain-only dry-run loaded 13 cases and planned 65 chats without executing them. Real DeepEval/provider integration was not run.
+Git verification: submitted reports/evidence/course-work/golden have no changes relative to fork main. No live provider calls.
