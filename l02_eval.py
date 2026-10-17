@@ -17,10 +17,11 @@ Environment:
     OPENAI_API_KEY     the same for a stand that runs on OpenAI
     GEMINI_API_KEY     a Google AI Studio key for a Gemini judge; when several
                        keys are set, Anthropic wins, then OpenAI, then Gemini
-    JUDGE_MODEL        default claude-haiku-4-5 (Anthropic), gpt-4.1-mini (OpenAI)
+    JUDGE_MODEL        default claude-haiku-5-5 (Anthropic), gpt-4.1-mini (OpenAI)
                        or gemini-3.5-flash-lite (Gemini)
     AGENT_PRICE_IN, AGENT_PRICE_OUT
-                       agent price in USD per million tokens, default 1 / 5
+                       agent price in USD per million tokens, default 0.1 / 0.5,
+                       the Haiku 5.5 price for prompts under 100k tokens
 
 Point it at a local stand only: it switches profiles, sets the clock and
 resets the data, which on a shared stand changes everyone's session.
@@ -50,9 +51,16 @@ CLOCK = "2026-09-15T10:00:00Z"
 BASELINE = "clean"
 LLM_METRICS = ("faithfulness", "answer_relevancy", "hallucination")
 JUDGE_DEFAULTS = {
-    "anthropic": "claude-haiku-4-5",
+    "anthropic": "claude-haiku-5-5",
     "openai": "gpt-4.1-mini",
     "gemini": "gemini-3.5-flash-lite",
+}
+ANTHROPIC_MODELS_UNKNOWN_TO_DEEPEVAL = {
+    "claude-haiku-5-5": {
+        "accepts_temperature": False,
+        "cost_per_input_token": 0.10 / 1e6,
+        "cost_per_output_token": 0.50 / 1e6,
+    },
 }
 # Judge calls DeepEval 4.2 makes per metric with include_reason=True:
 # faithfulness = truths, claims, verdicts, reason; relevancy = statements,
@@ -215,15 +223,26 @@ def judge_provider() -> str:
                      "(or run with --metrics domain)")
 
 
+def anthropic_model_facts(model: str) -> dict:
+    name = model.split("/")[-1]
+    for family, facts in ANTHROPIC_MODELS_UNKNOWN_TO_DEEPEVAL.items():
+        if name.startswith(family):
+            return facts
+    return {}
+
+
 def make_judge(provider: str, model: str):
     from deepeval.models import AnthropicModel, OpenAIModel, GeminiModel
 
     if provider == "anthropic":
         base = AnthropicModel
-        kwargs = {
-            "model": model,
-            "temperature": 0,
-        }
+        known = anthropic_model_facts(model)
+        kwargs = {"model": model}
+        if known.get("accepts_temperature", True):
+            kwargs["temperature"] = 0
+        for field in ("cost_per_input_token", "cost_per_output_token"):
+            if field in known:
+                kwargs[field] = known[field]
 
     elif provider == "openai":
         base = OpenAIModel
@@ -289,7 +308,8 @@ def measure(name: str, judge, test_case) -> dict:
 def run_case(case: dict, facts, metrics: set, judge_spec: tuple) -> dict:
     from deepeval.test_case import LLMTestCase
 
-    turn = stand("POST", "/chat", {"message": case["input"]})
+    turn = stand("POST", "/chat", {"message": case["input"],
+                                   "customer_id": case.get("customer_id")})
     tree = stand("GET", f"/api/_test/traces/{turn['request_id']}")
     answer = turn["answer"] or ""
     rec = {"id": case["id"], "answer": answer, "request_id": turn["request_id"],
@@ -423,8 +443,8 @@ def report(records: list, profiles: list, cases: list, passes: int, metrics: set
     judge_calls = sum(r["judge"]["calls"] for r in records)
     tok_in = sum(r["agent"]["input_tokens"] for r in records)
     tok_out = sum(r["agent"]["output_tokens"] for r in records)
-    price_in = float(os.environ.get("AGENT_PRICE_IN", "1"))
-    price_out = float(os.environ.get("AGENT_PRICE_OUT", "5"))
+    price_in = float(os.environ.get("AGENT_PRICE_IN", "0.1"))
+    price_out = float(os.environ.get("AGENT_PRICE_OUT", "0.5"))
     agent_usd = (tok_in * price_in + tok_out * price_out) / 1e6
     judge_usd = sum(r["judge"]["cost_usd"] for r in records)
     formula = formula_calls(cases, metrics) * passes
