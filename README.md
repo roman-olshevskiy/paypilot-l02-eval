@@ -198,3 +198,8 @@ docker compose --profile stand down
 | `--metrics domain` | лише доменна коректність: без судді; live-генерація агента витрачає токени |
 | `--workers 4` | паралельні кейси; при rate limit зменш |
 | `--dry-run` | план і кількість викликів, нічого не викликає |
+
+
+## Local fork: upstream synchronization
+
+[2026-10-17 compatibility and impact on completed homework](docs/upstream-sync-2026-10-17.md).
