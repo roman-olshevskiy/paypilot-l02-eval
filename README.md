@@ -79,6 +79,11 @@ Python локально не потрібен: скрипт запускаєть
 
 Деталі кожного кроку нижче.
 
+Склонував раніше за 09.10.2026 — почни з `git pull`. Суддя за замовчуванням
+тепер `claude-haiku-5-5`, а стара версія скрипта надсилає цій моделі
+`temperature` і отримує у відповідь 400 з текстом
+"`temperature` is deprecated for this model".
+
 ## Що в репозиторії
 
 | Файл | Що це |
@@ -86,10 +91,16 @@ Python локально не потрібен: скрипт запускаєть
 | `complaints.md` | двадцять скарг C-01…C-20 — вхідний матеріал кроку 1 |
 | `triage.md` | дошка кроку 1: бот як новий співробітник підтримки і три купки для скарг — не знайшов, сказав не те, застосував не так |
 | `l02_eval.py` | скрипт: шле кейси боту, рахує метрики, друкує звіт |
-| `cases.json` | 13 кейсів зі скарг: запит, оракул, перевірка, метрики, контекст |
+| `cases.json` | 13 кейсів зі скарг: запит, клієнт (`customer_id`), оракул, перевірка, метрики, контекст |
 | `requirements.txt` | залежності, ставляться в образ |
 | `Dockerfile`, `docker-compose.yml` | образ і запуск |
 | `.env.example` | шаблон `.env`: шлях до стенду і ключ судді |
+
+Стенд не бере клієнта з тексту питання: «I'm CUS-0005» у запиті сесію не
+відкриває. Скрипт передає стенду поле `customer_id` кейса — це те саме, що
+обрати клієнта в дропдауні «як клієнт» у вебінтерфейсі. Кейс без
+`customer_id` іде «без клієнта», і `get_account` відповідає
+`no customer is signed in for this session`.
 
 ## Що потрібно
 
@@ -113,7 +124,7 @@ docker compose build        # один раз, близько хвилини
 # план і кількість викликів, нічого не викликає
 docker compose run --rm eval --runs 3 --baseline-runs 2 --dry-run
 
-# повний прогін: clean двічі, lesson-02 тричі; ≈6 хв, ≈$1 на Haiku 4.5
+# повний прогін: clean двічі, lesson-02 тричі; ≈6 хв, ≈$0.1 на Haiku 5.5
 docker compose run --rm eval --runs 3 --baseline-runs 2
 ```
 
@@ -138,10 +149,10 @@ docker compose run --rm -T eval --runs 3 --baseline-runs 2 2>&1 | tee reports/fu
 | `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` | ключ судді, той самий, що в `.env` стенду; якщо задано кілька ключів, береться Anthropic, потім OpenAI, потім Gemini |
 | `GEMINI_API_KEY` | ключ Google AI Studio, якщо суддею буде Gemini. Якщо образ зібраний до появи Gemini, після `git pull` один раз виконай `docker compose build` |
 | `ANTHROPIC_BASE_URL`, `ANTHROPIC_AUTH_TOKEN` | для стенду через OpenRouter: `https://openrouter.ai/api` і той самий ключ |
-| `JUDGE_MODEL` | суддя, за замовчуванням `claude-haiku-4-5`, `gpt-4.1-mini` або `gemini-3.5-flash-lite` |
+| `JUDGE_MODEL` | суддя, за замовчуванням `claude-haiku-5-5`, `gpt-4.1-mini` або `gemini-3.5-flash-lite`. Порожнє значення залишає дефолт кіту — так і треба |
 | `EVAL_STAND_URL` | адреса стенду зсередини контейнера, див. нижче |
 | `STAND_PORT`, `STAND_PROFILE` | окремий стенд: порт на `127.0.0.1` (за замовчуванням `8010`) і стартовий профіль (`lesson-02`) |
-| `AGENT_PRICE_IN`, `AGENT_PRICE_OUT` | ціна агента, USD за 1M токенів, для рядка вартості |
+| `AGENT_PRICE_IN`, `AGENT_PRICE_OUT` | ціна агента, USD за 1M токенів, для рядка вартості. За замовчуванням `0.1` / `0.5` — прайс Haiku 5.5 до 100k токенів промпту, бо курс просить виставити у стенді саме її. Твій стенд на іншій моделі — впиши її прайс, інакше рядок вартості збреше |
 
 ## Адреса стенду
 
@@ -187,3 +198,8 @@ docker compose --profile stand down
 | `--metrics domain` | лише доменна коректність: без судді; live-генерація агента витрачає токени |
 | `--workers 4` | паралельні кейси; при rate limit зменш |
 | `--dry-run` | план і кількість викликів, нічого не викликає |
+
+
+## Local fork: upstream synchronization
+
+[2026-10-17 compatibility and impact on completed homework](docs/upstream-sync-2026-10-17.md).
